@@ -6,7 +6,7 @@ function Title() {
   let month = "12";
 
   return (
-    <div className="py-10 border-2">
+    <div className="border-2">
       {year}년 {month}월 Diary
     </div>
   );
@@ -18,6 +18,16 @@ function DitectButton() {
       <div>왼</div>
       <div>오늘</div>
       <div>오</div>
+    </div>
+  );
+}
+
+function InspireSentence() {
+  let sentence = "내면의 목소리를 듣고 싶다면, 일기를 쓰기 시작하라. - 웅디캉";
+
+  return (
+    <div>
+      <div>{sentence}</div>
     </div>
   );
 }
@@ -58,6 +68,7 @@ function DiaryUI() {
         <DitectButton />
       </div>
       <Calendar />
+      <InspireSentence />
     </>
   );
 }
