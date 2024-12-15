@@ -1,12 +1,14 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { buildCalendarData } from "./buildCalendarData";
+import "../src/Calendar.css";
 
 function Title() {
   let year = "2024";
   let month = "12";
 
   return (
-    <div className="border-2">
+    <div className="titlebar">
       {year}년 {month}월 Diary
     </div>
   );
@@ -14,7 +16,7 @@ function Title() {
 
 function DitectButton() {
   return (
-    <div className="columns-7 border-2">
+    <div className="nav">
       <div>왼</div>
       <div>오늘</div>
       <div>오</div>
@@ -26,35 +28,38 @@ function InspireSentence() {
   let sentence = "내면의 목소리를 듣고 싶다면, 일기를 쓰기 시작하라. - 웅디캉";
 
   return (
-    <div>
+    <div className="maxims">
       <div>{sentence}</div>
     </div>
   );
 }
 
 function Calendar() {
+  const calendarDataArr = buildCalendarData("2024", "12");
+  let weeks = [["일", "월", "화", "수", "목", "금", "토"]];
+
+  calendarDataArr.map((arr) => {
+    weeks.push(arr);
+  });
+
   return (
     <>
-      <div>
-        <div className="columns-7">
-          <div className="text-red-500">일</div>
-          <div>월</div>
-          <div>화</div>
-          <div>수</div>
-          <div>목</div>
-          <div>금</div>
-          <div>토</div>
-        </div>
-
-        <div className="columns-7">
-          <div className="text-red-500">1</div>
-          <div>2</div>
-          <div>3</div>
-          <div>4</div>
-          <div>5</div>
-          <div>6</div>
-          <div>7</div>
-        </div>
+      <div className="card-container">
+        {weeks.map((week) => (
+          <div className="columns-7">
+            {week.map((day, index) => {
+              if (day == "0") return <div></div>;
+              if (index === 0) {
+                return (
+                  <div key={day} style={{ color: "red" }}>
+                    {day}
+                  </div>
+                );
+              }
+              return <div key={day}>{day}</div>;
+            })}
+          </div>
+        ))}
       </div>
     </>
   );
@@ -63,12 +68,14 @@ function Calendar() {
 function DiaryUI() {
   return (
     <>
-      <div className="columns-2">
-        <Title />
-        <DitectButton />
+      <div>
+        <div className="columns-2">
+          <Title />
+          <DitectButton />
+        </div>
+        <Calendar />
+        <InspireSentence />
       </div>
-      <Calendar />
-      <InspireSentence />
     </>
   );
 }
