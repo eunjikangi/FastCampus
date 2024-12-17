@@ -52,7 +52,7 @@ function Calendar() {
               if (day == "0") return <div></div>;
               if (index === 0) {
                 return (
-                  <div key={day} style={{ color: "red" }}>
+                  <div key={day} className="day-cell">
                     {day}
                   </div>
                 );
