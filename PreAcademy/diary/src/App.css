@@ -1,0 +1,8 @@
+.container {
+  width: 100%;          /* 요소의 너비를 부모 요소의 너비에 따라 100%로 설정 */
+  min-width: 400px;
+  max-width: 600px;
+  margin: 0 auto;       /* 가운데 정렬 */
+  min-height: 100vh;    /* 요소의 최소 높이를 뷰포트(viewport) 높이의 100%로 설정합니다. 즉, 화면 전체의 높이를 차지하게 됩니다. */
+  border: 2px solid #444;
+}

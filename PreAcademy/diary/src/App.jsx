@@ -7,9 +7,9 @@ import Calendar from "./Calendar.jsx";
 
 function App() {
   return (
-    <>
+    <div className="container">
       <Calendar />
-    </>
+    </div>
   );
 }
 
